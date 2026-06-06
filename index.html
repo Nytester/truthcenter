@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Truth Center — Where Healing Begins with Truth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#14191c;
+    --ink-soft:#4a585f;
+    --ink-faint:#7d8990;
+    --cream:#FBF8F3;
+    --paper:#ffffff;
+    --cyan:#2E9FCB;
+    --cyan-bright:#4FB8DE;
+    --cyan-deep:#1F6E8F;
+    --cyan-tint:#EAF6FB;
+    --sand:#E0A94C;
+    --sand-tint:#FAF1DD;
+    --line:#ECE6DC;
+    --line-soft:#F2EDE5;
+    --bar:#0A0E11;
+    --radius:18px;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Mulish',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Newsreader',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:-.01em;}
+  .serif{font-family:'Newsreader',Georgia,serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .eyebrow{
+    font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cyan-deep);display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--cyan);display:inline-block;}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Mulish';font-weight:700;font-size:15.5px;
+    padding:15px 26px;border-radius:999px;cursor:pointer;transition:.22s ease;border:1.5px solid transparent;white-space:nowrap;}
+  .btn-primary{background:var(--cyan);color:#fff;box-shadow:0 10px 24px -10px rgba(46,159,203,.6);}
+  .btn-primary:hover{background:var(--cyan-deep);transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(46,159,203,.7);}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan-deep);background:#fff;}
+  .btn-dark{background:#fff;color:var(--bar);}
+  .btn-dark:hover{transform:translateY(-2px);}
+  .btn-ghost-light{border-color:rgba(255,255,255,.35);color:#fff;}
+  .btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+
+  /* ---------- header ---------- */
+  header.bar{position:sticky;top:0;z-index:50;background:var(--bar);}
+  .bar-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .bar .logo{height:42px;width:auto;}
+  nav.main{display:flex;align-items:center;gap:34px;}
+  nav.main a{color:#D7DDE1;font-weight:600;font-size:15px;transition:.2s;white-space:nowrap;}
+  nav.main a:hover{color:var(--cyan-bright);}
+  .bar-cta{display:flex;align-items:center;gap:14px;}
+  .phone-top{display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;font-size:15px;white-space:nowrap;}
+  .phone-top svg{width:16px;height:16px;stroke:var(--cyan-bright);}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .menu-btn svg{width:22px;height:22px;stroke:#fff;stroke-width:2;}
+
+  /* ---------- hero ---------- */
+  .hero{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);padding:74px 0 88px;position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+  .hero h1{font-size:clamp(40px,5vw,66px);color:var(--ink);margin:22px 0 0;}
+  .hero h1 em{font-style:italic;color:var(--cyan-deep);}
+  .hero p.lede{font-size:19px;color:var(--ink-soft);margin:24px 0 32px;max-width:31em;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero-note{margin-top:26px;display:flex;align-items:center;gap:12px;color:var(--ink-faint);font-size:14px;font-weight:600;}
+  .hero-note b{color:var(--ink);}
+  .hero-art{position:relative;}
+  .hero-frame{border:1px solid var(--line);border-radius:24px;padding:14px;background:#fff;box-shadow:0 40px 80px -50px rgba(20,40,50,.5);}
+  .floatcard{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:0 24px 50px -28px rgba(20,40,50,.45);display:flex;gap:13px;align-items:center;min-width:208px;}
+  .floatcard b{white-space:nowrap;}
+  .floatcard .ic{width:40px;height:40px;border-radius:11px;background:var(--cyan-tint);display:grid;place-items:center;flex:none;}
+  .floatcard .ic svg{width:20px;height:20px;stroke:var(--cyan-deep);}
+  .floatcard b{display:block;font-size:14.5px;color:var(--ink);line-height:1.2;}
+  .floatcard span{font-size:12.5px;color:var(--ink-faint);}
+  .fc-1{bottom:30px;left:-26px;}
+  .fc-2{top:26px;right:-22px;}
+
+  /* placeholder image */
+  .ph{position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#cfe6f0,#a9cdd9 55%,#c8b89a);}
+  .ph::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(120% 80% at 75% 15%, rgba(255,255,255,.4), transparent 60%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 12px, rgba(0,0,0,.03) 12px 24px);}
+  .ph .ph-icon{position:absolute;inset:0;display:grid;place-items:center;}
+  .ph .ph-icon svg{width:54px;height:54px;stroke:rgba(255,255,255,.85);opacity:.9;}
+  .ph .ph-tag{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(10,14,17,.62);backdrop-filter:blur(4px);
+    color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;letter-spacing:.01em;}
+  .ph.tall{aspect-ratio:4/5;}
+  .ph.wide{aspect-ratio:16/10;}
+  .ph.sq{aspect-ratio:1/1;}
+
+  /* ---------- trust strip ---------- */
+  .trust{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;}
+  .trust-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .trust-lab{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--ink-faint);max-width:16em;}
+  .badges{display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
+  .badge{display:flex;align-items:center;gap:10px;color:var(--ink-soft);font-weight:700;font-size:14px;opacity:.85;}
+  .badge .bdot{width:34px;height:34px;border-radius:9px;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--cyan-deep);}
+  .badge .bdot svg{width:17px;height:17px;stroke:var(--cyan-deep);}
+
+  /* ---------- section base ---------- */
+  section{padding:90px 0;}
+  .sec-head{max-width:640px;margin-bottom:48px;}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .sec-head h2{font-size:clamp(32px,3.6vw,46px);margin-top:16px;color:var(--ink);}
+  .sec-head p{font-size:18px;color:var(--ink-soft);margin-top:16px;}
+
+  /* about / philosophy */
+  .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center;}
+  .about-state{font-family:'Newsreader';font-size:clamp(27px,2.9vw,38px);line-height:1.24;color:var(--ink);font-weight:400;}
+  .about-state em{font-style:italic;color:var(--cyan-deep);}
+  .about-body{font-size:16.5px;color:var(--ink-soft);margin-top:22px;max-width:34em;}
+  .about-body + .about-body{margin-top:16px;}
+  .about-art{position:relative;}
+  .mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:64px;}
+  .mv{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px;position:relative;overflow:hidden;}
+  .mv::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--cyan);}
+  .mv.vision::before{background:var(--sand);}
+  .mv .mv-ic{width:46px;height:46px;border-radius:12px;background:var(--cyan-tint);display:grid;place-items:center;margin-bottom:18px;}
+  .mv.vision .mv-ic{background:var(--sand-tint);}
+  .mv .mv-ic svg{width:23px;height:23px;stroke:var(--cyan-deep);}
+  .mv.vision .mv-ic svg{stroke:var(--sand);}
+  .mv h3{font-size:25px;color:var(--ink);}
+  .mv p{font-size:16px;color:var(--ink-soft);margin-top:12px;}
+
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;transition:.25s;position:relative;overflow:hidden;}
+  .svc:hover{transform:translateY(-4px);box-shadow:0 30px 50px -34px rgba(20,40,50,.4);border-color:#dcedf4;}
+  .svc .sic{width:50px;height:50px;border-radius:13px;background:var(--cyan-tint);display:grid;place-items:center;margin-bottom:20px;}
+  .svc .sic svg{width:25px;height:25px;stroke:var(--cyan-deep);}
+  .svc h3{font-size:23px;color:var(--ink);}
+  .svc p{font-size:15px;color:var(--ink-soft);margin-top:10px;}
+  .svc .more{margin-top:16px;font-weight:700;font-size:14px;color:var(--cyan-deep);display:inline-flex;gap:7px;align-items:center;}
+  .svc:hover .more{gap:11px;}
+
+  /* steps band */
+  .steps{background:linear-gradient(160deg,#0F2730,#12333D 60%,#0E2730);color:#fff;border-radius:28px;padding:60px 56px;position:relative;overflow:hidden;}
+  .steps::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 100% 0%,rgba(79,184,222,.22),transparent 55%);}
+  .steps-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;position:relative;align-items:center;}
+  .steps h2{font-size:clamp(30px,3.3vw,42px);color:#fff;}
+  .steps .sub{color:#A9C6D2;margin-top:16px;font-size:17px;max-width:24em;}
+  .steplist{display:flex;flex-direction:column;gap:8px;}
+  .step{display:flex;gap:20px;padding:20px;border-radius:16px;transition:.2s;}
+  .step:hover{background:rgba(255,255,255,.05);}
+  .step .num{font-family:'Newsreader';font-size:30px;color:var(--cyan-bright);width:46px;flex:none;line-height:1;}
+  .step h4{font-size:19px;color:#fff;margin-bottom:5px;}
+  .step p{color:#9FBDC9;font-size:15px;}
+
+  /* testimonial */
+  .quote-sec{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .quote-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+  blockquote{font-family:'Newsreader';font-size:clamp(26px,3vw,38px);line-height:1.28;color:var(--ink);font-weight:400;}
+  blockquote .mark{color:var(--cyan);font-size:1.2em;}
+  .q-attr{margin-top:26px;display:flex;align-items:center;gap:14px;}
+  .q-attr .qa-dot{width:46px;height:46px;border-radius:50%;background:var(--sand-tint);display:grid;place-items:center;color:var(--sand);font-weight:800;font-family:'Newsreader';font-size:20px;flex:none;}
+  .q-attr b{display:block;font-size:15px;}
+  .q-attr span{font-size:13.5px;color:var(--ink-faint);}
+
+  /* staff */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .member .ph{margin-bottom:16px;}
+  .member h4{font-size:20px;color:var(--ink);}
+  .member .role{font-size:13.5px;color:var(--cyan-deep);font-weight:700;letter-spacing:.02em;}
+  .member p{font-size:14px;color:var(--ink-soft);margin-top:8px;}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px;}
+  .stat{text-align:center;padding:8px;}
+  .stat .n{font-family:'Newsreader';font-size:clamp(38px,4.4vw,56px);color:var(--cyan-deep);line-height:1;}
+  .stat .l{margin-top:10px;font-size:14.5px;color:var(--ink-soft);font-weight:600;}
+
+  /* cta band */
+  .cta{background:var(--bar);color:#fff;border-radius:28px;padding:64px 56px;text-align:center;position:relative;overflow:hidden;}
+  .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 120% at 50% -10%,rgba(79,184,222,.28),transparent 60%);}
+  .cta-frame{position:relative;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:48px 24px;}
+  .cta h2{font-size:clamp(32px,4vw,52px);color:#fff;}
+  .cta h2 em{font-style:italic;color:var(--cyan-bright);}
+  .cta p{color:#AFC4CE;font-size:18px;margin:18px auto 32px;max-width:36em;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  /* footer */
+  footer{background:var(--bar);color:#9FB0B8;padding:64px 0 36px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1);}
+  footer .logo{height:46px;margin-bottom:20px;}
+  footer p.about{font-size:14.5px;color:#8FA1A9;max-width:26em;}
+  footer .tagline{font-family:'Newsreader';font-style:italic;font-size:16px;color:var(--cyan-bright);margin-top:14px;}
+  .foot-col h5{color:#fff;font-family:'Mulish';font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
+  .foot-col a,.foot-col li{display:block;font-size:14.5px;color:#A9BAC2;margin-bottom:12px;list-style:none;}
+  .foot-col a:hover{color:var(--cyan-bright);}
+  .foot-contact div{display:flex;gap:11px;margin-bottom:14px;font-size:14.5px;color:#C2D1D8;}
+  .foot-contact svg{width:17px;height:17px;stroke:var(--cyan-bright);flex:none;margin-top:3px;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;color:#7E9098;flex-wrap:wrap;gap:12px;}
+  .foot-bottom a:hover{color:#fff;}
+
+  /* ---------- appointment modal ---------- */
+  .modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(10,14,17,.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:#fff;border-radius:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,.45);}
+  .modal-head{padding:32px 32px 0;border-bottom:1px solid var(--line);padding-bottom:24px;}
+  .modal-head h3{font-size:28px;color:var(--ink);margin-top:10px;}
+  .modal-head p{font-size:15px;color:var(--ink-soft);margin-top:8px;}
+  .modal-close{position:absolute;top:18px;right:18px;background:var(--line-soft);border:none;cursor:pointer;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;}
+  .modal-close svg{width:16px;height:16px;stroke:var(--ink);stroke-width:2.5;}
+  .modal-close:hover{background:var(--line);}
+  .modal-body{padding:28px 32px 32px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+  .form-group label{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.02em;}
+  .form-group input,.form-group select,.form-group textarea{
+    font-family:'Mulish',sans-serif;font-size:15px;color:var(--ink);
+    border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;
+    background:#fff;outline:none;transition:.2s;width:100%;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(46,159,203,.12);}
+  .form-group textarea{resize:vertical;min-height:90px;}
+  .form-note{font-size:12.5px;color:var(--ink-faint);margin-bottom:20px;display:flex;gap:7px;align-items:flex-start;line-height:1.5;}
+  .form-note svg{width:14px;height:14px;stroke:var(--cyan-deep);flex:none;margin-top:2px;}
+  .form-submit{width:100%;justify-content:center;font-size:16px;padding:16px;}
+  .form-success{display:none;text-align:center;padding:16px 0;}
+  .form-success .check{width:56px;height:56px;border-radius:50%;background:var(--cyan-tint);display:grid;place-items:center;margin:0 auto 16px;}
+  .form-success .check svg{width:26px;height:26px;stroke:var(--cyan-deep);stroke-width:2;}
+  .form-success h4{font-size:22px;color:var(--ink);margin-bottom:8px;}
+  .form-success p{font-size:15px;color:var(--ink-soft);}
+
+  /* ---------- mobile sticky CTA bar ---------- */
+  .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--bar);padding:12px 16px;gap:10px;border-top:1px solid rgba(255,255,255,.1);}
+  @media(max-width:980px){.sticky-cta{display:flex;}}
+  .sticky-cta a{flex:1;justify-content:center;font-size:14.5px;padding:13px 10px;}
+
+  /* mobile nav drawer */
+  .mobile-nav{display:none;position:fixed;inset:0;z-index:100;background:var(--bar);}
+  .mobile-nav.open{display:flex;flex-direction:column;}
+  .mobile-nav-header{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:74px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .mobile-nav-close{background:none;border:none;cursor:pointer;padding:8px;}
+  .mobile-nav-close svg{width:22px;height:22px;stroke:#fff;stroke-width:2;}
+  .mobile-nav-links{padding:24px 20px;display:flex;flex-direction:column;gap:4px;}
+  .mobile-nav-links a{color:#D7DDE1;font-weight:600;font-size:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+  .mobile-nav-links a:hover{color:var(--cyan-bright);}
+  .mobile-nav-foot{padding:24px 20px;margin-top:auto;}
+
+  @media(max-width:980px){
+    .hero-grid,.steps-grid,.quote-grid,.about-grid{grid-template-columns:1fr;gap:40px;}
+    .hero-grid{direction:rtl;} /* photo first on tablet */
+    .hero-grid > *{direction:ltr;}
+    .svc-grid{grid-template-columns:repeat(2,1fr);}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    nav.main,.phone-top{display:none;}
+    .menu-btn{display:block;}
+    .stats{grid-template-columns:repeat(2,1fr);gap:32px;}
+    /* extra bottom space for sticky CTA bar */
+    body{padding-bottom:70px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 16px;}
+    .svc-grid,.team-grid,.stats,.mv-grid{grid-template-columns:1fr;}
+    .hero{padding:48px 0 60px;}
+    .hero-grid{direction:ltr;}
+    .steps,.cta{padding:40px 22px;}
+    .fc-1,.fc-2{display:none;}
+    .modal{border-radius:20px 20px 0 0;max-height:92vh;}
+    .modal-overlay{align-items:flex-end;padding:0;}
+    .modal-head,.modal-body{padding-left:20px;padding-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- APPOINTMENT MODAL -->
+<div class="modal-overlay" id="apptModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="eyebrow">Get started</span>
+      <h3 id="modalTitle">Request an appointment</h3>
+      <p>Fill out the form and we'll reach out within one business day to confirm your time — confidentially.</p>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="apptForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name *</label>
+            <input type="text" id="fname" name="fname" autocomplete="given-name" required placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name *</label>
+            <input type="text" id="lname" name="lname" autocomplete="family-name" required placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone number *</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="(318) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="reason">Who is the appointment for? *</label>
+          <select id="reason" name="reason" required>
+            <option value="" disabled selected>Select one…</option>
+            <option>Myself (adult)</option>
+            <option>My child / adolescent</option>
+            <option>Family therapy</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Anything you'd like us to know? (optional)</label>
+          <textarea id="message" name="message" placeholder="Brief description of what you're looking for…"></textarea>
+        </div>
+        <p class="form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          Your information is completely confidential and protected under HIPAA. We will never share it without your consent.
+        </p>
+        <button type="submit" class="btn btn-primary form-submit">Send request
+          <svg viewBox="0 0 24 24" width="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Request received!</h4>
+        <p>We'll call or email you within one business day to confirm your appointment. You can also call us directly at <a href="tel:+13188246767" style="color:var(--cyan-deep);font-weight:700;">(318) 824-6767</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-nav-header">
+    <img class="logo" src="assets/logo.png" alt="The Truth Center" style="height:38px;" />
+    <button class="mobile-nav-close" id="navClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="#services" onclick="closeMobileNav()">Services</a>
+    <a href="#approach" onclick="closeMobileNav()">How It Works</a>
+    <a href="#team" onclick="closeMobileNav()">Our Team</a>
+    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  </nav>
+  <div class="mobile-nav-foot">
+    <a href="#" class="btn btn-primary appt-trigger" style="width:100%;justify-content:center;" onclick="closeMobileNav()">Request an appointment</a>
+    <a href="tel:+13188246767" style="display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;font-size:15px;margin-top:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" style="width:16px;height:16px;stroke:var(--cyan-bright);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      (318) 824-6767
+    </a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a href="#"><img class="logo" src="assets/logo.png" alt="The Truth Center" /></a>
+    <nav class="main">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#approach">How It Works</a>
+      <a href="#team">Our Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="bar-cta">
+      <a href="tel:+13188246767" class="phone-top">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        (318) 824-6767
+      </a>
+      <a href="#" class="btn btn-primary appt-trigger">Request an appointment</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Trauma-informed mental health care · Monroe, LA</span>
+      <h1>Healing begins with&nbsp;<em>the&nbsp;truth.</em></h1>
+      <p class="lede">Compassionate, trauma-informed therapy for children, adults, and families — meeting you with honesty and dignity, and helping you understand your story, break harmful patterns, and move toward lasting wellness.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary appt-trigger">Request an appointment
+          <svg viewBox="0 0 24 24" width="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+13188246767" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          Call (318) 824-6767
+        </a>
+      </div>
+      <div class="hero-note">
+        <svg viewBox="0 0 24 24" width="18" fill="none" stroke="var(--cyan-deep)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        <span><b>All ages welcome, 5 to 99.</b> Confidential, personalized care for all mental health conditions.</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-frame">
+        <div class="ph tall">
+          <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <span class="ph-tag">Photo — welcoming therapist &amp; client</span>
+        </div>
+      </div>
+      <div class="floatcard fc-1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div><b>Judgment-free care</b><span>You are seen, heard &amp; understood</span></div>
+      </div>
+      <div class="floatcard fc-2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><b>Trauma-informed</b><span>Specialty care, every age</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-lab">Where healing begins with truth — care for all ages</div>
+    <div class="badges">
+      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>Trauma-Informed</div>
+      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>Licensed Clinicians</div>
+      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>Ages 5–99</div>
+      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Most Insurance</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / PHILOSOPHY -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-art">
+        <div class="ph wide">
+          <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div>
+          <span class="ph-tag">Photo — calm, welcoming office or team</span>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Our Philosophy</span>
+        <p class="about-state" style="margin-top:18px;">We believe healing begins when people feel <em>seen, heard, and understood.</em></p>
+        <p class="about-body">Our philosophy is rooted in the truth that trauma affects far more of us than we often realize — shaping our lives in ways we can't always name, and keeping us stuck in cycles we long to escape. Left unaddressed, that trauma quietly shapes behavior, emotional health, relationships, and personal growth.</p>
+        <p class="about-body">That's why we specialize in trauma-informed care — but our work goes further. We provide compassionate, clinically sound treatment for all mental health conditions, knowing trauma is often woven into the background of anxiety, depression, anger, and grief.</p>
+      </div>
+    </div>
+    <div class="mv-grid">
+      <div class="mv mission">
+        <div class="mv-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div>
+        <h3>Our Mission</h3>
+        <p>To provide compassionate, trauma-informed mental health care that helps individuals of all ages uncover the root causes of emotional pain, break through barriers to healing, and experience lasting transformation — empowering each person to reclaim their truth, restore their peace, and rebuild their lives with clarity, strength, and purpose.</p>
+      </div>
+      <div class="mv vision">
+        <div class="mv-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Our Vision</h3>
+        <p>A world where every person — regardless of age or background — has access to compassionate, trauma-informed care that brings lasting healing and empowerment. We strive to be a trusted leader in the treatment of trauma and mental illness: breaking generational cycles, restoring hope in communities, and creating pathways to healthy, authentic, purpose-driven lives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How We Help</span>
+      <h2>Care that meets you where you are</h2>
+      <p>From a child navigating big emotions to an adult wrestling with the past, our licensed team offers a comprehensive, personalized approach for ages 5 to 99.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Trauma-Informed Therapy</h3>
+        <p>Our specialty. We help you understand your story, identify root causes, and move toward lasting wellness.</p>
+        <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+      <article class="svc">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Anxiety &amp; Depression</h3>
+        <p>Evidence-based support to quiet anxiety, lift depression, and help you find steady ground again.</p>
+        <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+      <article class="svc">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3>Grief &amp; Loss</h3>
+        <p>A compassionate space to process loss, honor what mattered, and find a way forward at your own pace.</p>
+        <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+      <article class="svc">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+        <h3>Anger Management</h3>
+        <p>Practical tools to understand anger, break harmful patterns, and respond to life with greater calm.</p>
+        <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+      <article class="svc">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1M19 8v6M22 11h-6"/></svg></div>
+        <h3>Child &amp; Adolescent Therapy</h3>
+        <p>Caring, age-appropriate help for children and young adults navigating big emotions and change.</p>
+        <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+      <article class="svc">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Individual &amp; Family Therapy</h3>
+        <p>One-on-one and whole-family sessions to rebuild communication, trust, and peace at home.</p>
+        <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH / STEPS -->
+<section id="approach" style="padding-top:0;">
+  <div class="wrap">
+    <div class="steps">
+      <div class="steps-grid">
+        <div>
+          <span class="eyebrow" style="color:var(--cyan-bright)">Getting started</span>
+          <h2 style="margin-top:16px;">Three honest steps toward healing</h2>
+          <p class="sub">Reaching out is the hardest part. From your first call, we make the rest simple, private, and judgment-free.</p>
+          <a href="#" class="btn btn-dark appt-trigger" style="margin-top:28px;">Request an appointment</a>
+        </div>
+        <div class="steplist">
+          <div class="step">
+            <div class="num">01</div>
+            <div><h4>Reach out, confidentially</h4><p>Call us or send a message. We'll listen, answer your questions, and find a time that works for you or your family.</p></div>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <div><h4>Meet your therapist</h4><p>In a private first session, a licensed clinician learns your story and shapes a plan around your goals.</p></div>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <div><h4>Begin intentional therapy</h4><p>Start effective, personalized care with a team committed to real, measurable progress — beside you the whole way.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="quote-sec" id="story">
+  <div class="wrap quote-grid">
+    <div class="ph sq">
+      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <span class="ph-tag">Photo — client / family story</span>
+    </div>
+    <div>
+      <span class="eyebrow">Real stories</span>
+      <blockquote style="margin-top:20px;"><span class="mark">"</span>They never made me feel ashamed. For the first time, someone helped me understand my story — and believe that healing was actually possible for me.<span class="mark">"</span></blockquote>
+      <div class="q-attr">
+        <div class="qa-dot">★</div>
+        <div><b>A client of The Truth Center</b><span>Monroe, LA · sample testimonial — replace with a real one</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:80px;padding-bottom:80px;">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow" style="justify-content:center;">Care for every age, every story</span>
+      <h2>A different kind of mental health care</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">5–99</div><div class="l">Ages we welcome</div></div>
+      <div class="stat"><div class="n">All</div><div class="l">Mental health conditions</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Confidential &amp; personalized</div></div>
+      <div class="stat"><div class="n">1-on-1</div><div class="l">Plans built around you</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Our Team</span>
+      <h2>Clinicians who lead with compassion</h2>
+      <p>Licensed counselors, social workers, and therapists devoted to honest, trauma-informed, person-centered care.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member">
+        <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
+        <h4>Clinician Name</h4><div class="role">Clinical Director, LPC</div><p>Leads our trauma-informed approach and clinical care.</p>
+      </div>
+      <div class="member">
+        <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
+        <h4>Clinician Name</h4><div class="role">Licensed Therapist, LCSW</div><p>Specializes in anxiety, depression, and grief.</p>
+      </div>
+      <div class="member">
+        <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
+        <h4>Clinician Name</h4><div class="role">Child &amp; Adolescent Therapist</div><p>Helps young clients name and navigate emotions.</p>
+      </div>
+      <div class="member">
+        <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
+        <h4>Clinician Name</h4><div class="role">Trauma Specialist, LPC</div><p>Guides intentional, evidence-based trauma therapy.</p>
+      </div>
+    </div>
+    <p style="font-size:13.5px;color:var(--ink-faint);margin-top:22px;">Team names and roles are placeholders — share your clinicians and I'll drop in real bios and photos.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta">
+      <div class="cta-frame">
+        <h2>The truth is, <em>healing is possible.</em></h2>
+        <p>Take the first step today. Whether for yourself, your child, or your family, our team is ready to listen — confidentially and without judgment, whenever you're ready.</p>
+        <div class="cta-btns">
+          <a href="tel:+13188246767" class="btn btn-primary">Call (318) 824-6767</a>
+          <a href="#" class="btn btn-ghost-light appt-trigger">Request an appointment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="logo" src="assets/logo.png" alt="The Truth Center" />
+        <p class="about">Compassionate, trauma-informed mental health care for all ages in Monroe, Louisiana.</p>
+        <p class="tagline">Where healing begins with truth.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#services">Trauma-Informed Therapy</a>
+        <a href="#services">Anxiety &amp; Depression</a>
+        <a href="#services">Grief &amp; Loss</a>
+        <a href="#services">Child &amp; Adolescent</a>
+        <a href="#services">Individual &amp; Family</a>
+      </div>
+      <div class="foot-col">
+        <h5>Agency</h5>
+        <a href="#about">About Us</a>
+        <a href="#about">Our Philosophy</a>
+        <a href="#team">Our Team</a>
+        <a href="#approach">How It Works</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col foot-contact">
+        <h5>Visit Us</h5>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>200 Hudson Lane, Suite 2<br/>Monroe, LA 71201</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          <a href="tel:+13188246767" style="color:inherit;">(318) 824-6767</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          <a href="https://www.thebrassgroup.com" target="_blank" rel="noopener" style="color:inherit;">www.thebrassgroup.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Truth Center · A program of The Brass Group, Inc.</span>
+      <span style="display:flex;gap:24px;"><a href="#">Privacy</a><a href="#">HIPAA Notice</a><a href="#">Accessibility</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" aria-hidden="true">
+  <a href="tel:+13188246767" class="btn btn-ghost-light">
+    <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+    Call now
+  </a>
+  <a href="#" class="btn btn-primary appt-trigger" style="flex:1.4;">
+    Request appointment
+  </a>
+</div>
+
+<script>
+  /* ---- mobile nav ---- */
+  const menuBtn = document.getElementById('menuBtn');
+  const navClose = document.getElementById('navClose');
+  const mobileNav = document.getElementById('mobileNav');
+
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', openMobileNav);
+  navClose.addEventListener('click', closeMobileNav);
+  mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) closeMobileNav(); });
+
+  /* ---- appointment modal ---- */
+  const apptModal = document.getElementById('apptModal');
+  const modalClose = document.getElementById('modalClose');
+  const apptForm = document.getElementById('apptForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  function openAppt(e) {
+    if (e) e.preventDefault();
+    closeMobileNav();
+    apptModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    apptForm.style.display = '';
+    formSuccess.style.display = 'none';
+    setTimeout(() => apptModal.querySelector('input').focus(), 50);
+  }
+
+  function closeAppt() {
+    apptModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.appt-trigger').forEach(el => el.addEventListener('click', openAppt));
+  modalClose.addEventListener('click', closeAppt);
+  apptModal.addEventListener('click', (e) => { if (e.target === apptModal) closeAppt(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeMobileNav(); closeAppt(); }
+  });
+
+  /* ---- form submit ---- */
+  apptForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Basic validation
+    const required = apptForm.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      field.style.borderColor = '';
+      if (!field.value.trim()) {
+        field.style.borderColor = '#e05252';
+        valid = false;
+      }
+    });
+    if (!valid) return;
+
+    // Send via mailto as a simple no-backend fallback
+    const fname = apptForm.fname.value.trim();
+    const lname = apptForm.lname.value.trim();
+    const phone = apptForm.phone.value.trim();
+    const email = apptForm.email.value.trim();
+    const reason = apptForm.reason.value;
+    const message = apptForm.message.value.trim();
+
+    const body = [
+      `Name: ${fname} ${lname}`,
+      `Phone: ${phone}`,
+      email ? `Email: ${email}` : '',
+      `For: ${reason}`,
+      message ? `Notes: ${message}` : '',
+    ].filter(Boolean).join('\n');
+
+    window.location.href = `mailto:info@thebrassgroup.com?subject=Appointment Request – ${fname} ${lname}&body=${encodeURIComponent(body)}`;
+
+    // Show success state
+    apptForm.style.display = 'none';
+    formSuccess.style.display = 'block';
+    apptForm.reset();
+  });
+</script>
+
+</body>
+</html>
