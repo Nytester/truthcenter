@@ -57,11 +57,14 @@
   .btn-dark:hover{transform:translateY(-2px);}
   .btn-ghost-light{border-color:rgba(255,255,255,.35);color:#fff;}
   .btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+  .btn-sand{background:var(--sand);color:#fff;box-shadow:0 10px 24px -10px rgba(224,169,76,.5);}
+  .btn-sand:hover{background:#c9943a;transform:translateY(-2px);}
 
   /* ---------- header ---------- */
   header.bar{position:sticky;top:0;z-index:50;background:var(--bar);}
-  .bar-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
-  .bar .logo{height:42px;width:auto;}
+  .bar-inner{display:flex;align-items:center;justify-content:space-between;height:88px;}
+  .bar .logo-wrap{display:flex;align-items:center;gap:0;}
+  .bar .logo{height:62px;width:auto;}
   nav.main{display:flex;align-items:center;gap:34px;}
   nav.main a{color:#D7DDE1;font-weight:600;font-size:15px;transition:.2s;white-space:nowrap;}
   nav.main a:hover{color:var(--cyan-bright);}
@@ -142,12 +145,21 @@
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;transition:.25s;position:relative;overflow:hidden;}
   .svc:hover{transform:translateY(-4px);box-shadow:0 30px 50px -34px rgba(20,40,50,.4);border-color:#dcedf4;}
+  .svc.featured{border-color:var(--cyan);background:var(--cyan-tint);}
+  .svc.featured .sic{background:#fff;}
   .svc .sic{width:50px;height:50px;border-radius:13px;background:var(--cyan-tint);display:grid;place-items:center;margin-bottom:20px;}
   .svc .sic svg{width:25px;height:25px;stroke:var(--cyan-deep);}
   .svc h3{font-size:23px;color:var(--ink);}
   .svc p{font-size:15px;color:var(--ink-soft);margin-top:10px;}
   .svc .more{margin-top:16px;font-weight:700;font-size:14px;color:var(--cyan-deep);display:inline-flex;gap:7px;align-items:center;}
   .svc:hover .more{gap:11px;}
+  .svc .tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan-deep);background:#fff;border:1.5px solid var(--cyan);border-radius:999px;padding:4px 10px;margin-top:12px;}
+
+  /* medicaid notice */
+  .medicaid-notice{background:var(--cyan-tint);border:1.5px solid var(--cyan);border-radius:var(--radius);padding:20px 28px;display:flex;align-items:center;gap:16px;margin-top:32px;}
+  .medicaid-notice svg{width:22px;height:22px;stroke:var(--cyan-deep);flex:none;}
+  .medicaid-notice p{font-size:15px;color:var(--cyan-deep);font-weight:600;}
+  .medicaid-notice p span{color:var(--ink-soft);font-weight:400;}
 
   /* steps band */
   .steps{background:linear-gradient(160deg,#0F2730,#12333D 60%,#0E2730);color:#fff;border-radius:28px;padding:60px 56px;position:relative;overflow:hidden;}
@@ -173,7 +185,7 @@
   .q-attr span{font-size:13.5px;color:var(--ink-faint);}
 
   /* staff */
-  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .member .ph{margin-bottom:16px;}
   .member h4{font-size:20px;color:var(--ink);}
   .member .role{font-size:13.5px;color:var(--cyan-deep);font-weight:700;letter-spacing:.02em;}
@@ -184,6 +196,11 @@
   .stat{text-align:center;padding:8px;}
   .stat .n{font-family:'Newsreader';font-size:clamp(38px,4.4vw,56px);color:var(--cyan-deep);line-height:1;}
   .stat .l{margin-top:10px;font-size:14.5px;color:var(--ink-soft);font-weight:600;}
+
+  /* careers / join team */
+  .careers-band{background:linear-gradient(135deg,var(--sand-tint),#fff);border:1.5px solid var(--sand);border-radius:28px;padding:52px 56px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+  .careers-band h3{font-size:clamp(26px,2.8vw,36px);color:var(--ink);}
+  .careers-band p{font-size:16px;color:var(--ink-soft);margin-top:12px;max-width:38em;}
 
   /* cta band */
   .cta{background:var(--bar);color:#fff;border-radius:28px;padding:64px 56px;text-align:center;position:relative;overflow:hidden;}
@@ -197,7 +214,7 @@
   /* footer */
   footer{background:var(--bar);color:#9FB0B8;padding:64px 0 36px;}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1);}
-  footer .logo{height:46px;margin-bottom:20px;}
+  footer .logo{height:52px;margin-bottom:20px;}
   footer p.about{font-size:14.5px;color:#8FA1A9;max-width:26em;}
   footer .tagline{font-family:'Newsreader';font-style:italic;font-size:16px;color:var(--cyan-bright);margin-top:14px;}
   .foot-col h5{color:#fff;font-family:'Mulish';font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
@@ -228,6 +245,7 @@
     background:#fff;outline:none;transition:.2s;width:100%;}
   .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(46,159,203,.12);}
   .form-group textarea{resize:vertical;min-height:90px;}
+  .form-group input[type="file"]{padding:10px 12px;font-size:14px;cursor:pointer;}
   .form-note{font-size:12.5px;color:var(--ink-faint);margin-bottom:20px;display:flex;gap:7px;align-items:flex-start;line-height:1.5;}
   .form-note svg{width:14px;height:14px;stroke:var(--cyan-deep);flex:none;margin-top:2px;}
   .form-submit{width:100%;justify-content:center;font-size:16px;padding:16px;}
@@ -236,6 +254,15 @@
   .form-success .check svg{width:26px;height:26px;stroke:var(--cyan-deep);stroke-width:2;}
   .form-success h4{font-size:22px;color:var(--ink);margin-bottom:8px;}
   .form-success p{font-size:15px;color:var(--ink-soft);}
+
+  /* employment modal accent */
+  .modal-overlay.employ .modal-head .eyebrow{color:var(--sand);}
+  .modal-overlay.employ .modal-head .eyebrow::before{background:var(--sand);}
+  .modal-overlay.employ .form-group input:focus,
+  .modal-overlay.employ .form-group select:focus,
+  .modal-overlay.employ .form-group textarea:focus{border-color:var(--sand);box-shadow:0 0 0 3px rgba(224,169,76,.12);}
+  .modal-overlay.employ .form-success .check{background:var(--sand-tint);}
+  .modal-overlay.employ .form-success .check svg{stroke:var(--sand);}
 
   /* ---------- mobile sticky CTA bar ---------- */
   .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--bar);padding:12px 16px;gap:10px;border-top:1px solid rgba(255,255,255,.1);}
@@ -255,7 +282,7 @@
 
   @media(max-width:980px){
     .hero-grid,.steps-grid,.quote-grid,.about-grid{grid-template-columns:1fr;gap:40px;}
-    .hero-grid{direction:rtl;} /* photo first on tablet */
+    .hero-grid{direction:rtl;}
     .hero-grid > *{direction:ltr;}
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .team-grid{grid-template-columns:repeat(2,1fr);}
@@ -263,9 +290,10 @@
     nav.main,.phone-top{display:none;}
     .menu-btn{display:block;}
     .stats{grid-template-columns:repeat(2,1fr);gap:32px;}
-    /* extra bottom space for sticky CTA bar */
     body{padding-bottom:70px;}
     .form-row{grid-template-columns:1fr;}
+    .careers-band{grid-template-columns:1fr;text-align:center;}
+    .careers-band .btn{width:100%;justify-content:center;}
   }
   @media(max-width:560px){
     .wrap{padding:0 16px;}
@@ -273,6 +301,7 @@
     .hero{padding:48px 0 60px;}
     .hero-grid{direction:ltr;}
     .steps,.cta{padding:40px 22px;}
+    .careers-band{padding:36px 24px;}
     .fc-1,.fc-2{display:none;}
     .modal{border-radius:20px 20px 0 0;max-height:92vh;}
     .modal-overlay{align-items:flex-end;padding:0;}
@@ -320,6 +349,7 @@
             <option>Myself (adult)</option>
             <option>My child / adolescent</option>
             <option>Family therapy</option>
+            <option>Substance abuse treatment (IOP)</option>
             <option>Not sure yet</option>
           </select>
         </div>
@@ -338,7 +368,67 @@
       <div class="form-success" id="formSuccess">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
         <h4>Request received!</h4>
-        <p>We'll call or email you within one business day to confirm your appointment. You can also call us directly at <a href="tel:+13188246767" style="color:var(--cyan-deep);font-weight:700;">(318) 824-6767</a>.</p>
+        <p>We'll call or email you within one business day to confirm your appointment. You can also call us directly at <a href="tel:+13187377242" style="color:var(--cyan-deep);font-weight:700;">(318) 737-7242</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPLOYMENT MODAL -->
+<div class="modal-overlay employ" id="employModal" role="dialog" aria-modal="true" aria-labelledby="employModalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="eyebrow">Join Our Team</span>
+      <h3 id="employModalTitle">Employment inquiry</h3>
+      <p>Interested in joining The Truth Center? Share your information and we'll be in touch about opportunities.</p>
+      <button class="modal-close" id="employModalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="employForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="e-fname">First name *</label>
+            <input type="text" id="e-fname" name="e-fname" required placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label for="e-lname">Last name *</label>
+            <input type="text" id="e-lname" name="e-lname" required placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="e-credentials">Credentials / Licensure *</label>
+          <input type="text" id="e-credentials" name="e-credentials" required placeholder="e.g. LPC, LAC, LCSW, LPC-A…" />
+        </div>
+        <div class="form-group">
+          <label for="e-email">Email address *</label>
+          <input type="email" id="e-email" name="e-email" required placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="e-phone">Phone number *</label>
+          <input type="tel" id="e-phone" name="e-phone" required placeholder="(318) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label for="e-resume">Resume (PDF, DOC, or DOCX)</label>
+          <input type="file" id="e-resume" name="e-resume" accept=".pdf,.doc,.docx" />
+        </div>
+        <div class="form-group">
+          <label for="e-message">Tell us about yourself (optional)</label>
+          <textarea id="e-message" name="e-message" placeholder="Your experience, specialties, and what draws you to The Truth Center…"></textarea>
+        </div>
+        <p class="form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          Your information is kept confidential. We review all inquiries and reach out to qualified candidates.
+        </p>
+        <button type="submit" class="btn btn-sand form-submit">Submit inquiry
+          <svg viewBox="0 0 24 24" width="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <div class="form-success" id="employSuccess">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Inquiry received!</h4>
+        <p>Thank you for your interest in joining The Truth Center. We'll review your information and reach out if there's a match.</p>
       </div>
     </div>
   </div>
@@ -347,7 +437,7 @@
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <img class="logo" src="assets/logo.png" alt="The Truth Center" style="height:38px;" />
+    <img class="logo" src="assets/logo.png" alt="The Truth Center" style="height:44px;" />
     <button class="mobile-nav-close" id="navClose" aria-label="Close menu">
       <svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
@@ -357,13 +447,14 @@
     <a href="#services" onclick="closeMobileNav()">Services</a>
     <a href="#approach" onclick="closeMobileNav()">How It Works</a>
     <a href="#team" onclick="closeMobileNav()">Our Team</a>
+    <a href="#careers" onclick="closeMobileNav()">Careers</a>
     <a href="#contact" onclick="closeMobileNav()">Contact</a>
   </nav>
   <div class="mobile-nav-foot">
     <a href="#" class="btn btn-primary appt-trigger" style="width:100%;justify-content:center;" onclick="closeMobileNav()">Request an appointment</a>
-    <a href="tel:+13188246767" style="display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;font-size:15px;margin-top:14px;">
+    <a href="tel:+13187377242" style="display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;font-size:15px;margin-top:14px;">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" style="width:16px;height:16px;stroke:var(--cyan-bright);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-      (318) 824-6767
+      (318) 737-7242
     </a>
   </div>
 </div>
@@ -371,18 +462,19 @@
 <!-- HEADER -->
 <header class="bar">
   <div class="wrap bar-inner">
-    <a href="#"><img class="logo" src="assets/logo.png" alt="The Truth Center" /></a>
+    <a href="#" class="logo-wrap"><img class="logo" src="assets/logo.png" alt="The Truth Center" /></a>
     <nav class="main">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#approach">How It Works</a>
       <a href="#team">Our Team</a>
+      <a href="#careers">Careers</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="bar-cta">
-      <a href="tel:+13188246767" class="phone-top">
+      <a href="tel:+13187377242" class="phone-top">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-        (318) 824-6767
+        (318) 737-7242
       </a>
       <a href="#" class="btn btn-primary appt-trigger">Request an appointment</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
@@ -398,19 +490,19 @@
     <div class="hero-copy">
       <span class="eyebrow">Trauma-informed mental health care · Monroe, LA</span>
       <h1>Healing begins with&nbsp;<em>the&nbsp;truth.</em></h1>
-      <p class="lede">Compassionate, trauma-informed therapy for children, adults, and families — meeting you with honesty and dignity, and helping you understand your story, break harmful patterns, and move toward lasting wellness.</p>
+      <p class="lede">Compassionate, trauma-informed therapy for children, teens, adults, and families — including licensed substance abuse treatment (IOP, ASAM Level 2.1). Meeting you with honesty and dignity, helping you break harmful patterns and move toward lasting wellness.</p>
       <div class="hero-cta">
         <a href="#" class="btn btn-primary appt-trigger">Request an appointment
           <svg viewBox="0 0 24 24" width="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="tel:+13188246767" class="btn btn-ghost">
+        <a href="tel:+13187377242" class="btn btn-ghost">
           <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          Call (318) 824-6767
+          Call (318) 737-7242
         </a>
       </div>
       <div class="hero-note">
         <svg viewBox="0 0 24 24" width="18" fill="none" stroke="var(--cyan-deep)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
-        <span><b>All ages welcome, 5 to 99.</b> Confidential, personalized care for all mental health conditions.</span>
+        <span><b>All ages welcome.</b> Medicaid accepted · HIPAA-protected, personalized care.</span>
       </div>
     </div>
     <div class="hero-art">
@@ -439,8 +531,8 @@
     <div class="badges">
       <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>Trauma-Informed</div>
       <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>Licensed Clinicians</div>
-      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>Ages 5–99</div>
-      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Most Insurance</div>
+      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>IOP · ASAM 2.1</div>
+      <div class="badge"><span class="bdot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Medicaid Accepted</div>
     </div>
   </div>
 </div>
@@ -459,7 +551,7 @@
         <span class="eyebrow">Our Philosophy</span>
         <p class="about-state" style="margin-top:18px;">We believe healing begins when people feel <em>seen, heard, and understood.</em></p>
         <p class="about-body">Our philosophy is rooted in the truth that trauma affects far more of us than we often realize — shaping our lives in ways we can't always name, and keeping us stuck in cycles we long to escape. Left unaddressed, that trauma quietly shapes behavior, emotional health, relationships, and personal growth.</p>
-        <p class="about-body">That's why we specialize in trauma-informed care — but our work goes further. We provide compassionate, clinically sound treatment for all mental health conditions, knowing trauma is often woven into the background of anxiety, depression, anger, and grief.</p>
+        <p class="about-body">That's why we specialize in trauma-informed care — but our work goes further. We provide compassionate, clinically sound treatment for all mental health conditions, knowing trauma is often woven into the background of anxiety, depression, anger, and grief. We are also licensed to provide Intensive Outpatient Program (IOP) substance abuse treatment for both teenagers and adults at ASAM Level 2.1.</p>
       </div>
     </div>
     <div class="mv-grid">
@@ -471,7 +563,7 @@
       <div class="mv vision">
         <div class="mv-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Our Vision</h3>
-        <p>A world where every person — regardless of age or background — has access to compassionate, trauma-informed care that brings lasting healing and empowerment. We strive to be a trusted leader in the treatment of trauma and mental illness: breaking generational cycles, restoring hope in communities, and creating pathways to healthy, authentic, purpose-driven lives.</p>
+        <p>A world where every person — regardless of age or background — has access to compassionate, trauma-informed care that brings lasting healing and empowerment. We strive to be a trusted leader in the treatment of trauma, mental illness, and substance abuse: breaking generational cycles, restoring hope in communities, and creating pathways to healthy, authentic, purpose-driven lives.</p>
       </div>
     </div>
   </div>
@@ -483,7 +575,7 @@
     <div class="sec-head">
       <span class="eyebrow">How We Help</span>
       <h2>Care that meets you where you are</h2>
-      <p>From a child navigating big emotions to an adult wrestling with the past, our licensed team offers a comprehensive, personalized approach for ages 5 to 99.</p>
+      <p>From a child navigating big emotions to an adult in recovery, our licensed team offers a comprehensive, personalized approach for all ages.</p>
     </div>
     <div class="svc-grid">
       <article class="svc">
@@ -497,6 +589,15 @@
         <h3>Anxiety &amp; Depression</h3>
         <p>Evidence-based support to quiet anxiety, lift depression, and help you find steady ground again.</p>
         <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </article>
+      <article class="svc featured">
+        <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a5 5 0 0 1 5 5v3H7V7a5 5 0 0 1 5-5z"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M12 15v3"/></svg></div>
+        <h3>Substance Abuse Treatment</h3>
+        <p>Licensed IOP (Intensive Outpatient Program) for teenagers and adults. We provide structured, compassionate treatment for substance use disorders at ASAM Level 2.1 — helping clients build lasting recovery alongside strong mental health.</p>
+        <div class="tag">
+          <svg viewBox="0 0 24 24" width="11" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          IOP · ASAM Level 2.1 · Teens &amp; Adults
+        </div>
       </article>
       <article class="svc">
         <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -522,6 +623,10 @@
         <p>One-on-one and whole-family sessions to rebuild communication, trust, and peace at home.</p>
         <span class="more">Learn more <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </article>
+    </div>
+    <div class="medicaid-notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4M14 15h4"/></svg>
+      <p><strong>We accept Medicaid.</strong> <span>The Truth Center currently accepts Medicaid as our primary insurance. Please contact us to verify your coverage before scheduling.</span></p>
     </div>
   </div>
 </section>
@@ -583,7 +688,7 @@
     </div>
     <div class="stats">
       <div class="stat"><div class="n">5–99</div><div class="l">Ages we welcome</div></div>
-      <div class="stat"><div class="n">All</div><div class="l">Mental health conditions</div></div>
+      <div class="stat"><div class="n">IOP</div><div class="l">ASAM 2.1 substance abuse</div></div>
       <div class="stat"><div class="n">100%</div><div class="l">Confidential &amp; personalized</div></div>
       <div class="stat"><div class="n">1-on-1</div><div class="l">Plans built around you</div></div>
     </div>
@@ -596,27 +701,47 @@
     <div class="sec-head">
       <span class="eyebrow">Our Team</span>
       <h2>Clinicians who lead with compassion</h2>
-      <p>Licensed counselors, social workers, and therapists devoted to honest, trauma-informed, person-centered care.</p>
+      <p>Licensed counselors devoted to honest, trauma-informed, person-centered care — and licensed substance abuse treatment.</p>
     </div>
     <div class="team-grid">
       <div class="member">
         <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
-        <h4>Clinician Name</h4><div class="role">Clinical Director, LPC</div><p>Leads our trauma-informed approach and clinical care.</p>
+        <h4>Montrell Handy</h4>
+        <div class="role">Owner · LPC, Licensed Professional Counselor</div>
+        <p>Leads The Truth Center's trauma-informed clinical approach with a commitment to honest, compassionate care.</p>
       </div>
       <div class="member">
         <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
-        <h4>Clinician Name</h4><div class="role">Licensed Therapist, LCSW</div><p>Specializes in anxiety, depression, and grief.</p>
+        <h4>Melanie James-Boose</h4>
+        <div class="role">LAC, Licensed Addictions Counselor</div>
+        <p>Specializes in substance abuse treatment, recovery support, and helping clients build lasting, healthy lives.</p>
       </div>
       <div class="member">
         <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
-        <h4>Clinician Name</h4><div class="role">Child &amp; Adolescent Therapist</div><p>Helps young clients name and navigate emotions.</p>
-      </div>
-      <div class="member">
-        <div class="ph tall"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div><span class="ph-tag">Photo</span></div>
-        <h4>Clinician Name</h4><div class="role">Trauma Specialist, LPC</div><p>Guides intentional, evidence-based trauma therapy.</p>
+        <h4>Mona Honeywood</h4>
+        <div class="role">LAC, Licensed Addictions Counselor</div>
+        <p>Provides compassionate addictions counseling for teens and adults, guiding clients through every stage of recovery.</p>
       </div>
     </div>
-    <p style="font-size:13.5px;color:var(--ink-faint);margin-top:22px;">Team names and roles are placeholders — share your clinicians and I'll drop in real bios and photos.</p>
+  </div>
+</section>
+
+<!-- JOIN OUR TEAM / CAREERS -->
+<section id="careers" style="padding-top:0;">
+  <div class="wrap">
+    <div class="careers-band">
+      <div>
+        <span class="eyebrow" style="color:var(--sand);"><span style="display:inline-block;width:26px;height:1.5px;background:var(--sand);margin-right:10px;vertical-align:middle;"></span>Careers</span>
+        <h3 style="margin-top:14px;">Join our team of compassionate clinicians</h3>
+        <p>Are you a licensed therapist or counselor passionate about trauma-informed care or substance abuse treatment? We'd love to hear from you. Submit your information and resume and we'll reach out about available opportunities.</p>
+      </div>
+      <div>
+        <a href="#" class="btn btn-sand employ-trigger">
+          <svg viewBox="0 0 24 24" width="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Apply / Inquire
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -626,9 +751,9 @@
     <div class="cta">
       <div class="cta-frame">
         <h2>The truth is, <em>healing is possible.</em></h2>
-        <p>Take the first step today. Whether for yourself, your child, or your family, our team is ready to listen — confidentially and without judgment, whenever you're ready.</p>
+        <p>Take the first step today. Whether for yourself, your child, or your family — including substance abuse treatment — our team is ready to listen confidentially and without judgment.</p>
         <div class="cta-btns">
-          <a href="tel:+13188246767" class="btn btn-primary">Call (318) 824-6767</a>
+          <a href="tel:+13187377242" class="btn btn-primary">Call (318) 737-7242</a>
           <a href="#" class="btn btn-ghost-light appt-trigger">Request an appointment</a>
         </div>
       </div>
@@ -642,12 +767,13 @@
     <div class="foot-grid">
       <div>
         <img class="logo" src="assets/logo.png" alt="The Truth Center" />
-        <p class="about">Compassionate, trauma-informed mental health care for all ages in Monroe, Louisiana.</p>
+        <p class="about">Compassionate, trauma-informed mental health and substance abuse care for all ages in Monroe, Louisiana. Medicaid accepted.</p>
         <p class="tagline">Where healing begins with truth.</p>
       </div>
       <div class="foot-col">
         <h5>Services</h5>
         <a href="#services">Trauma-Informed Therapy</a>
+        <a href="#services">Substance Abuse (IOP)</a>
         <a href="#services">Anxiety &amp; Depression</a>
         <a href="#services">Grief &amp; Loss</a>
         <a href="#services">Child &amp; Adolescent</a>
@@ -659,26 +785,31 @@
         <a href="#about">Our Philosophy</a>
         <a href="#team">Our Team</a>
         <a href="#approach">How It Works</a>
+        <a href="#careers">Careers</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="foot-col foot-contact">
         <h5>Visit Us</h5>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>200 Hudson Lane, Suite 2<br/>Monroe, LA 71201</span>
+          <span>801 Stubbs Avenue, Suite C<br/>Monroe, LA 71201</span>
         </div>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          <a href="tel:+13188246767" style="color:inherit;">(318) 824-6767</a>
+          <a href="tel:+13187377242" style="color:inherit;">(318) 737-7242</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Fax: (318) 855-4495</span>
         </div>
         <div>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
-          <a href="https://www.thebrassgroup.com" target="_blank" rel="noopener" style="color:inherit;">www.thebrassgroup.com</a>
+          <a href="mailto:thetruthcenter318@gmail.com" style="color:inherit;">thetruthcenter318@gmail.com</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 The Truth Center · A program of The Brass Group, Inc.</span>
+      <span>© 2026 The Truth Center · Monroe, LA · Medicaid Accepted</span>
       <span style="display:flex;gap:24px;"><a href="#">Privacy</a><a href="#">HIPAA Notice</a><a href="#">Accessibility</a></span>
     </div>
   </div>
@@ -686,7 +817,7 @@
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-cta" aria-hidden="true">
-  <a href="tel:+13188246767" class="btn btn-ghost-light">
+  <a href="tel:+13187377242" class="btn btn-ghost-light">
     <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
     Call now
   </a>
@@ -742,26 +873,46 @@
   modalClose.addEventListener('click', closeAppt);
   apptModal.addEventListener('click', (e) => { if (e.target === apptModal) closeAppt(); });
 
+  /* ---- employment modal ---- */
+  const employModal = document.getElementById('employModal');
+  const employModalClose = document.getElementById('employModalClose');
+  const employForm = document.getElementById('employForm');
+  const employSuccess = document.getElementById('employSuccess');
+
+  function openEmploy(e) {
+    if (e) e.preventDefault();
+    closeMobileNav();
+    employModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    employForm.style.display = '';
+    employSuccess.style.display = 'none';
+    setTimeout(() => employModal.querySelector('input').focus(), 50);
+  }
+
+  function closeEmploy() {
+    employModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.employ-trigger').forEach(el => el.addEventListener('click', openEmploy));
+  employModalClose.addEventListener('click', closeEmploy);
+  employModal.addEventListener('click', (e) => { if (e.target === employModal) closeEmploy(); });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { closeMobileNav(); closeAppt(); }
+    if (e.key === 'Escape') { closeMobileNav(); closeAppt(); closeEmploy(); }
   });
 
-  /* ---- form submit ---- */
+  /* ---- appointment form submit ---- */
   apptForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Basic validation
     const required = apptForm.querySelectorAll('[required]');
     let valid = true;
     required.forEach(field => {
       field.style.borderColor = '';
-      if (!field.value.trim()) {
-        field.style.borderColor = '#e05252';
-        valid = false;
-      }
+      if (!field.value.trim()) { field.style.borderColor = '#e05252'; valid = false; }
     });
     if (!valid) return;
 
-    // Send via mailto as a simple no-backend fallback
     const fname = apptForm.fname.value.trim();
     const lname = apptForm.lname.value.trim();
     const phone = apptForm.phone.value.trim();
@@ -777,12 +928,45 @@
       message ? `Notes: ${message}` : '',
     ].filter(Boolean).join('\n');
 
-    window.location.href = `mailto:info@thebrassgroup.com?subject=Appointment Request – ${fname} ${lname}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:thetruthcenter318@gmail.com?subject=Appointment Request – ${fname} ${lname}&body=${encodeURIComponent(body)}`;
 
-    // Show success state
     apptForm.style.display = 'none';
     formSuccess.style.display = 'block';
     apptForm.reset();
+  });
+
+  /* ---- employment form submit ---- */
+  employForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const required = employForm.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      field.style.borderColor = '';
+      if (!field.value.trim()) { field.style.borderColor = '#e05252'; valid = false; }
+    });
+    if (!valid) return;
+
+    const fname = document.getElementById('e-fname').value.trim();
+    const lname = document.getElementById('e-lname').value.trim();
+    const credentials = document.getElementById('e-credentials').value.trim();
+    const email = document.getElementById('e-email').value.trim();
+    const phone = document.getElementById('e-phone').value.trim();
+    const message = document.getElementById('e-message').value.trim();
+
+    const body = [
+      `Name: ${fname} ${lname}`,
+      `Credentials: ${credentials}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      message ? `About: ${message}` : '',
+      '\n(Note: Resume was selected locally — please attach it manually if sending via email.)',
+    ].filter(Boolean).join('\n');
+
+    window.location.href = `mailto:thetruthcenter318@gmail.com?subject=Employment Inquiry – ${fname} ${lname} (${credentials})&body=${encodeURIComponent(body)}`;
+
+    employForm.style.display = 'none';
+    employSuccess.style.display = 'block';
+    employForm.reset();
   });
 </script>
 
